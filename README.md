@@ -11,9 +11,22 @@ React JS
 
 API Endpoints :
 '/api/wallet' --> to get all wallets.
+example:
+localhost:3000/api/wallet  --> {
+    "data": []
+}
 '/api/wallet/setup' --> to create a wallet.
+example:
+localhost:3000/api/wallet  --> {
+    "data": []
+}
+
 '/api/wallet/:id' --> get a wallet details.
 
 '/api/transactions' --> to get all transactions.
+example:
+localhost:3000/api/wallet/transactions --> {
+  data:[],
+}
 '/api/transactions/transact/:wallet_id' --> to create a transaction.
 '/api/transactions/:id' --> get a transaction details.
