@@ -16,9 +16,9 @@ mongoose.connect(
   },
 ).then(() => console.log('connected to mongo db')).catch((err) => { console.log(err) });
 
+app.use(express.json()); 
 app.use("/api/wallet", walletRouter);
 app.use("/api/transactions", transactionRoutes);
-app.use(express.json()); 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
 });
