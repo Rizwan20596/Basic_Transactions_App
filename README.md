@@ -7,6 +7,7 @@ Node Js, Express Js, MongoDB
 Frontend uses the below tech stack:
 React JS
 
+Please add a .env file in the backend folder with PORT and MONGODB_URI
 To run backend app, goto /backend folder in terminal, do npm install and then run npm start
 To run frontend app, goto /frontend folder in terminal, do npm install and then run npm start
 
