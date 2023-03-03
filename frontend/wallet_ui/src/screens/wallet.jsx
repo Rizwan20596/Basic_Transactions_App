@@ -10,19 +10,21 @@ const Wallet = () => {
         setState(clonedState);
     }
 
-    saveWallet = ()  => {
+    const saveWallet = ()  => {
         //make API call with the above values
         //let response = await fetch();
         //save the wallet id in local storage
 
     }
     return(
-        <div>
-            <form ref={formRef}>
+        <div className="create-wallet">
+            <form ref={formRef} className='create-wallet-form'>
                 <div>
-                    <input id='name' name='name' type='text' onChange={(e) => updateWalletValues('name', e.target.value)}/>
+                    <span>Name:</span>
+                    <input id='name' name='name' type='text' onChange={(e) => updateWalletValues('name', e.target.value)} required/>
                 </div>
                 <div>
+                    <span>Balance:</span>
                     <input id='balance' name='balance' type='number' onChange={(e) => updateWalletValues('balance', e.target.value)}/>
                 </div>
                 <div>
