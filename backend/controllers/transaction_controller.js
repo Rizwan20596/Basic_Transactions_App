@@ -17,6 +17,7 @@ exports.createTransaction = async (req,res) => {
         walletServices.updateWallet(req.params.id, wallet);
         let reqObj = {...req.body};
         reqObj['wallet_id'] = wallet;
+        reqObj['type'] = req.body.amount > 0 ? 'Credit' : 'Debit';
         const transaction = await transactionServices.createTransaction(reqObj);
         res.status(200).json({data: transaction});
     }catch(ex){
