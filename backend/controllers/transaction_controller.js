@@ -4,7 +4,7 @@ const walletServices = require('../services/wallet_services');
 exports.getAllTransactions = async (req,res) => {
     try{
         const transactions = await transactionServices.getAllTransactions();
-        res.status(200).json({data: transactions});
+        res.status(200).json({data: transactions, stauts: 200});
     }catch(err){
         res.status(500).json({ error: err.message });
     }
@@ -20,7 +20,7 @@ exports.createTransaction = async (req,res) => {
         reqObj['balance'] = wallet.balance;
         reqObj['type'] = req.body.amount > 0 ? 'Credit' : 'Debit';
         const transaction = await transactionServices.createTransaction(reqObj);
-        res.status(200).json({data: transaction});
+        res.status(200).json({data: transaction, stauts: 200});
     }catch(err){
         res.status(500).json({ error: err.message });
     }
@@ -31,14 +31,14 @@ exports.getTransactionById = async (req,res) => {
         const transaction = await transactionServices.getTransactionById(req.params.id);
         res.status(200).json({data: transaction});
     }catch(err){
-        res.status(500).json({ error: err.message });
+        res.status(500).json({ error: err.message, stauts: 200});
     }
 }
 
 exports.getTransactionsByWalletId = async (req,res) => {
     try{
         const transactions = await transactionServices.getTransactionsByWalletId(req.params.walletId);
-        res.status(200).json({data: transactions});
+        res.status(200).json({data: transactions, stauts: 200});
     }catch(err){
         res.status(500).json({ error: err.message });
     }
