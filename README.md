@@ -15,13 +15,10 @@ example:
 localhost:3000/api/wallet  --> {
     "data": []
 }
-'/api/wallet/setup' --> to create a wallet.
-example:
-localhost:3000/api/wallet  --> {
-    "data": []
-}
-
+'/api/wallet/setup' --> to create a wallet
 '/api/wallet/:id' --> get a wallet details.
+
+
 
 '/api/transactions' --> to get all transactions.
 example:
