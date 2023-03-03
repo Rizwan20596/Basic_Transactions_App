@@ -97,4 +97,81 @@ response:
     }
 }
 
+'/api/transactions/wallet/:wallet_id' --> get all transactions of a specific wallet
+example:
+localhost:3000/api/transactions/wallet/64023aff7f20468863821678
+response:
+{
+    "data": [
+        {
+            "_id": "64023d1bac31d813f0523050",
+            "wallet_id": [
+                "64023aff7f20468863821678"
+            ],
+            "amount": -20,
+            "description": "Recharge",
+            "type": "Debit",
+            "updated_date": "2023-03-03T18:31:55.671Z",
+            "__v": 0
+        },
+        {
+            "_id": "64023d663ce3526db034f976",
+            "wallet_id": [
+                "64023aff7f20468863821678"
+            ],
+            "amount": -20,
+            "description": "Recharge",
+            "type": "Debit",
+            "updated_date": "2023-03-03T18:33:10.700Z",
+            "__v": 0
+        },
+        {
+            "_id": "64023de43ce3526db034f97c",
+            "wallet_id": [
+                "64023aff7f20468863821678"
+            ],
+            "amount": -20,
+            "description": "Recharge",
+            "type": "Debit",
+            "updated_date": "2023-03-03T18:35:16.291Z",
+            "__v": 0
+        },
+        {
+            "_id": "64023e40adf289c7246982a9",
+            "wallet_id": [
+                "64023aff7f20468863821678"
+            ],
+            "amount": -20,
+            "description": "Recharge",
+            "type": "Debit",
+            "updated_date": "2023-03-03T18:36:48.127Z",
+            "__v": 0
+        },
+        {
+            "_id": "64023e57952be40f378ca757",
+            "wallet_id": [
+                "64023aff7f20468863821678"
+            ],
+            "amount": -20,
+            "balance": 220,
+            "description": "Recharge",
+            "type": "Debit",
+            "updated_date": "2023-03-03T18:37:11.309Z",
+            "__v": 0
+        },
+        {
+            "_id": "64023ff4230c6e01d742c05b",
+            "wallet_id": [
+                "64023aff7f20468863821678"
+            ],
+            "amount": -20.5,
+            "balance": 220,
+            "description": "Test decimal",
+            "type": "Debit",
+            "updated_date": "2023-03-03T18:44:04.112Z",
+            "__v": 0
+        }
+    ]
+}
+
 
