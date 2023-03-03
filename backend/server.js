@@ -2,30 +2,25 @@ const express = require("express");
 const mongoose = require("mongoose");
 const walletRouter = require("./routes/wallet_routes");
 const transactionRoutes = require("./routes/transaction_routes");
+const dotenv = require('dotenv');
 const app = express();
+dotenv.config();
 
 
 //configure mongoose
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/HIGHLEVEL",
+  process.env.MONGODB_URI,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
-  (err) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log("Connected to MongoDB");
-    }
-  }
-);
+).then(() => console.log('connected to mongo db')).catch((err) => { console.log(err) });
 
 app.use("/api/wallet", walletRouter);
 app.use("/api/transactions", transactionRoutes);
 app.use(express.json()); 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
  
 module.exports = app;
