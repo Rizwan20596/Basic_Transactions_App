@@ -1,4 +1,5 @@
 const transactionServices = require('../services/transaction_services');
+const walletServices = require('../services/wallet_services');
 
 exports.getAllTransactions = async (req,res) => {
     try{
@@ -11,7 +12,12 @@ exports.getAllTransactions = async (req,res) => {
 
 exports.createTransaction = async (req,res) => {
     try{
-        const transaction = await transactionServices.createTransaction(req.body);
+        const wallet = await walletServices.getWalletById(req.params.id);
+        wallet.balance += req.body.amount;
+        walletServices.updateWallet(req.params.id, wallet);
+        let reqObj = {...req.body};
+        reqObj['wallet_id'] = wallet;
+        const transaction = await transactionServices.createTransaction(reqObj);
         res.status(200).json({data: transaction});
     }catch(ex){
         res.status(500).json({ error: err.message });

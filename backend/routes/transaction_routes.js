@@ -4,7 +4,7 @@ const { getAllTransactions, getTransactionById, createTransaction} = require('..
 const router = express.Router();
  
 router.route("/").get(getAllTransactions);
-router.route('/setup').post(createTransaction);
+router.route('/transact/:walletId').post(createTransaction);
 router.route("/:id").get(getTransactionById);
 
 module.exports = router;
