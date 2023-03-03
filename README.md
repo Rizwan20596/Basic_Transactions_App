@@ -22,7 +22,7 @@ localhost:3000/api/wallet  --> {
 
 '/api/transactions' --> to get all transactions.
 example:
-localhost:3000/api/wallet/transactions --> {
+localhost:3000/api/transactions --> {
   data:[],
 }
 '/api/transactions/transact/:wallet_id' --> to create a transaction.
