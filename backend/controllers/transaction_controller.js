@@ -34,3 +34,12 @@ exports.getTransactionById = async (req,res) => {
         res.status(500).json({ error: err.message });
     }
 }
+
+exports.getTransactionsByWalletId = async (req,res) => {
+    try{
+        const transactions = await transactionServices.getTransactionsByWalletId(req.params.walletId);
+        res.status(200).json({data: transactions});
+    }catch(err){
+        res.status(500).json({ error: err.message });
+    }
+}

@@ -10,3 +10,8 @@ exports.createTransaction = async (wallet) => {
 exports.getTransactionById = async (id) => {
   return await TransactionModel.findById(id);
 }; 
+
+exports.getTransactionsByWalletId = async (id) => {
+  let allTrans = await TransactionModel.find();
+  return allTrans.filter(trans => trans.wallet_id.includes(id));
+}; 
