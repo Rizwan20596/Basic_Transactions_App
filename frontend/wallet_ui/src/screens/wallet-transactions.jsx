@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css'; 
 import 'ag-grid-community/styles/ag-theme-alpine.css'; 
 
 const WalletTransactions = () => {
+    const gridRef = useRef();
     const [rowData,setRowData] = useState([]);
     const [columnDefs,setColumnDefs] = useState([
         { field: '_id' },
@@ -22,8 +23,10 @@ const WalletTransactions = () => {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         }).then((res) => res.json()).then(json => setRowData(json.data));
-    },[])
-    console.log(rowData)
+    },[]);
+    const onExportClick = () => {
+        gridRef.current.api.exportDataAsCsv();
+      }
 
 return(
     <>
@@ -37,9 +40,13 @@ return(
                 </u>
             </strong>
         </div>
+        <div style={{ margin: '10px 0' }}>
+          <button onClick={() => {onExportClick()}}>Download CSV export file</button>
+        </div>
         <div className='grid-body'>
         <div className="ag-theme-alpine" style={{ height: 400}}>
             <AgGridReact
+                ref={gridRef}
                 rowData={rowData}
                 columnDefs={columnDefs}
                 animateRows={true} 
