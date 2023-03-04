@@ -3,8 +3,13 @@ const walletServices = require('../services/wallet_services');
 
 exports.getAllTransactions = async (req,res) => {
     try{
-        const transactions = await transactionServices.getAllTransactions();
-        res.status(200).json({data: transactions, stauts: 200});
+        if (req.query.walletId) {
+            const transactions = await transactionServices.getTransactionsByWalletId(req.query.walletId);
+            res.status(200).json({ data: transactions, stauts: 200 });
+        } else {
+            const transactions = await transactionServices.getAllTransactions();
+            res.status(200).json({ data: transactions, stauts: 200 });
+        }
     }catch(err){
         res.status(500).json({ error: err.message });
     }
@@ -33,14 +38,5 @@ exports.getTransactionById = async (req,res) => {
         res.status(200).json({data: transaction});
     }catch(err){
         res.status(500).json({ error: err.message, stauts: 200});
-    }
-}
-
-exports.getTransactionsByWalletId = async (req,res) => {
-    try{
-        const transactions = await transactionServices.getTransactionsByWalletId(req.params.walletId);
-        res.status(200).json({data: transactions, stauts: 200});
-    }catch(err){
-        res.status(500).json({ error: err.message });
     }
 }

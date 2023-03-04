@@ -100,7 +100,7 @@ response:
 
 '/api/transactions/wallet/:wallet_id' --> get all transactions of a specific wallet
 example:
-localhost:3000/api/transactions/wallet/64023aff7f20468863821678
+localhost:3000/api/transactions?walletId=64023aff7f20468863821678&skip=0&limit=10
 response:
 {
     "data": [
