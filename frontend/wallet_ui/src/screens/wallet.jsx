@@ -6,16 +6,20 @@ const Wallet = () => {
     const [wallet,setWallet] = useState({});
 
     useEffect(() => {
-        let activeWallet = window.localStorage.getItem('active_wallet');
+        let activeWallet = JSON.parse(window.localStorage.getItem('active_wallet'));
         if(activeWallet){
-            setWallet(JSON.parse(activeWallet))
+            let url = `http://localhost:3000/api/wallet/${activeWallet._id}`;
+            fetch(url, {
+                method: "GET",
+                headers: { "Content-Type": "application/json" }
+            }).then((res) => res.json()).then(json => { setWallet(json.data); });
         }
     },[]);
     
     const updateWalletValues = (field, value) => {
         let clonedState = {...state};
         if(field === 'type'){
-            clonedState[field] = (value === true ? 'Credit' : 'Debit');
+            clonedState[field] = (value.target.checked === true ? 'Credit' : 'Debit');
         }else{
             clonedState[field] = value;
         }
@@ -62,14 +66,6 @@ const Wallet = () => {
         <>
             {wallet && 
                 <>
-                    <div className="wallet-details">
-                        <div className="wallet-details-span">
-                            <strong>Active Wallet Name: </strong><span>{wallet.name}</span>
-                        </div>
-                        <div className="wallet-details-span">
-                            <strong>Active Wallet Balance: </strong><span>{wallet.balance}</span>
-                        </div>
-                    </div>
                     <div className="wallet-details-header">
                         <span>Make a transaction</span>
                         <a href="/wallet-transactions">transaction list</a>
@@ -86,13 +82,21 @@ const Wallet = () => {
                         </div>
                         <div>
                             <span>Credit?</span>
-                            <input id='type' name='type' type='checkbox' onChange={(e) => updateWalletValues('type', e.target.value)} />
+                            <input id='type' name='type' type='checkbox' onChange={(e) => updateWalletValues('type', e)} />
                         </div>
                         <div>
                             <button type='submit' id='submit'>Submit</button>
                         </div>
 
                     </form>
+                    </div>
+                    <div className="wallet-details">
+                        <div className="wallet-details-span">
+                            <strong>Active Wallet Name: </strong><span>{wallet.name}</span>
+                        </div>
+                        <div className="wallet-details-span">
+                            <strong>Active Wallet Balance: </strong><span>{wallet.balance}</span>
+                        </div>
                     </div>
                 </>
             }
