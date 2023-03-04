@@ -64,6 +64,17 @@ const Wallet = () => {
         setWallet(res.data);
     }
 
+    const isNumberKey = (e) => {
+        var charCode = (e.which) ? e.which : e.keyCode;
+        if (charCode == 190) {
+            return true;
+        } else if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            e.preventDefault();
+            return false;
+        }        
+        return true;
+    }
+
     return(
         <>
             {wallet?._id && 
@@ -76,7 +87,7 @@ const Wallet = () => {
                     <form ref={formRef} className='create-wallet-form' onSubmit={(e) => { saveTransaction(e) }}>
                         <div>
                             <span>Amount:</span>
-                            <input id='amount' name='amount' type='number' onChange={(e) => updateWalletValues('amount', e.target.value)} required />
+                            <input id='amount' name='amount' pattern="^[0-9]+(\.[0-9]{1,4})?$" onKeyDown={(e) => isNumberKey(e)}  onChange={(e) => updateWalletValues('amount', e.target.value)} required />
                         </div>
                         <div>
                             <span>Description:</span>
@@ -111,7 +122,7 @@ const Wallet = () => {
                         </div>
                         <div>
                             <span>Balance:</span>
-                            <input id='balance' name='balance' type='number' onChange={(e) => updateWalletValues('balance', e.target.value)} />
+                            <input id='balance' name='balance' pattern="^[0-9]+(\.[0-9]{1,4})?$"  onKeyDown={(e) => isNumberKey(e)} onChange={(e) => updateWalletValues('balance', e.target.value)} />
                         </div>
                         <div>
                             <button type='submit' id='submit'>Submit</button>

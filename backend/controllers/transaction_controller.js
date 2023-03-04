@@ -13,11 +13,12 @@ exports.getAllTransactions = async (req,res) => {
 exports.createTransaction = async (req,res) => {
     try{
         const wallet = await walletServices.getWalletById(req.params.walletId);
-        wallet.balance += parseInt(req.body.amount);
+        let bal =parseFloat( wallet.balance)+parseFloat(req.body.amount);
+        wallet.balance = bal.toFixed(4);
         walletServices.updateWallet(req.params.walletId, wallet);
         let reqObj = {...req.body};
         reqObj['wallet_id'] = wallet;
-        reqObj['balance'] = wallet.balance;
+        reqObj['balance'] = bal;
         reqObj['type'] = req.body.type || req.body.amount > 0 ? 'Credit' : 'Debit';
         const transaction = await transactionServices.createTransaction(reqObj);
         res.status(200).json({data: transaction, stauts: 200});
