@@ -6,7 +6,7 @@ const walletSchema = new Schema({
   name: String,
   created_date: {
     type: Date,
-    default: Date.now,
+    default: new Date(),
   },
 });
  

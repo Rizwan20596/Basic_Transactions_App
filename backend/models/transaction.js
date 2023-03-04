@@ -10,7 +10,7 @@ const transactionSchema = new Schema({
   description: String,
   updated_date: {
     type: Date,
-    default: Date.now,
+    default: new Date(),
   },
   type: String,
 });
