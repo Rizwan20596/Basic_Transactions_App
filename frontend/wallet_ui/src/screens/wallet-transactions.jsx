@@ -41,7 +41,7 @@ return(
             </strong>
         </div>
         <div style={{ margin: '10px 0' }}>
-          <button onClick={() => {onExportClick()}}>Download CSV export file</button>
+          <button onClick={() => {onExportClick()}}>Download as CSV file</button>
         </div>
         <div className='grid-body'>
         <div className="ag-theme-alpine" style={{ height: 400}}>
