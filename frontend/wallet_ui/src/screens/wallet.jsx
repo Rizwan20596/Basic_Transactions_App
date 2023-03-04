@@ -13,6 +13,8 @@ const Wallet = () => {
                 method: "GET",
                 headers: { "Content-Type": "application/json" }
             }).then((res) => res.json()).then(json => { setWallet(json.data); });
+        }else{
+            setWallet({})
         }
     },[]);
     
@@ -64,7 +66,7 @@ const Wallet = () => {
 
     return(
         <>
-            {wallet && 
+            {wallet?._id && 
                 <>
                     <div className="wallet-details-header">
                         <span>Make a transaction</span>
@@ -100,7 +102,7 @@ const Wallet = () => {
                     </div>
                 </>
             }
-            {!wallet &&
+            {!wallet?._id &&
                 <div className="create-wallet">
                     <form ref={formRef} className='create-wallet-form' onSubmit={(e) => { saveWallet(e) }}>
                         <div>

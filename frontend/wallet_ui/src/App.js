@@ -5,8 +5,7 @@ import WalletTransactions from './screens/wallet-transactions'
 import {
   Route,
   BrowserRouter as Router,
-  Routes,
-  useNavigate
+  Routes
 } from 'react-router-dom';
 
 function App() {
