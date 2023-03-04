@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const walletRouter = require("./routes/wallet_routes");
 const transactionRoutes = require("./routes/transaction_routes");
 const dotenv = require('dotenv');
+const cors = require('cors');
 const app = express();
 dotenv.config();
 
@@ -15,7 +16,7 @@ mongoose.connect(
     useUnifiedTopology: true,
   },
 ).then(() => console.log('connected to mongo db')).catch((err) => { console.log(err) });
-
+app.use(cors());
 app.use(express.json()); 
 app.use("/api/wallet", walletRouter);
 app.use("/api/transactions", transactionRoutes);

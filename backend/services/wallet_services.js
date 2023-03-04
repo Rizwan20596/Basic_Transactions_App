@@ -12,5 +12,6 @@ exports.getWalletById = async (id) => {
 }; 
 
 exports.updateWallet = async (id, wallet) => {
+  console.log(wallet)
    return await WalletModel.findByIdAndUpdate(id, wallet);
 }; 

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
  
 const walletSchema = new Schema({
   balance: Number,
-  Name: String,
+  name: String,
   created_date: {
     type: Date,
     default: Date.now,

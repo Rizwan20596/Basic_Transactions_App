@@ -13,7 +13,7 @@ exports.getAllTransactions = async (req,res) => {
 exports.createTransaction = async (req,res) => {
     try{
         const wallet = await walletServices.getWalletById(req.params.walletId);
-        wallet.balance += req.body.amount;
+        wallet.balance += parseInt(req.body.amount);
         walletServices.updateWallet(req.params.walletId, wallet);
         let reqObj = {...req.body};
         reqObj['wallet_id'] = wallet;
