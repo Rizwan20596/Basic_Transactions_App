@@ -18,7 +18,7 @@ const WalletTransactions = () => {
     ]);
     const wallet = JSON.parse(window.localStorage.getItem('active_wallet'));
     useEffect(() => {
-        let url = `http://localhost:3000/api/transactions?walletId=${wallet._id}&skip=0&limit=10`;
+        let url = `https://test-services.onrender.com/api/transactions?walletId=${wallet._id}&skip=0&limit=10`;
         fetch(url, {
             method: "GET",
             headers: { "Content-Type": "application/json" }

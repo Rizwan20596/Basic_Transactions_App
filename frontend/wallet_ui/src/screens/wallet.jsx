@@ -8,7 +8,7 @@ const Wallet = () => {
     useEffect(() => {
         let activeWallet = JSON.parse(window.localStorage.getItem('active_wallet'));
         if(activeWallet){
-            let url = `http://localhost:3000/api/wallet/${activeWallet._id}`;
+            let url = `https://test-services.onrender.com/api/wallet/${activeWallet._id}`;
             fetch(url, {
                 method: "GET",
                 headers: { "Content-Type": "application/json" }
@@ -30,7 +30,7 @@ const Wallet = () => {
 
     const saveWallet = async (e)  => {
         e.preventDefault();
-        let url = "http://localhost:3000/api/wallet/setup";
+        let url = "https://test-services.onrender.com/api/wallet/setup";
         let res = await fetch(url, {
             method: "POST",
             body: JSON.stringify(state),
@@ -44,7 +44,7 @@ const Wallet = () => {
 
     const saveTransaction = async (e) => {
         e.preventDefault();
-        let url = `http://localhost:3000/api/transactions/transact/${wallet._id}`;
+        let url = `https://test-services.onrender.com/api/transactions/transact/${wallet._id}`;
         let res = await fetch(url, {
             method: "POST",
             body: JSON.stringify(state),
@@ -56,7 +56,7 @@ const Wallet = () => {
     }
 
     const refreshWallet = async () => {
-        let url = `http://localhost:3000/api/wallet/${wallet._id}`;
+        let url = `https://test-services.onrender.com/api/wallet/${wallet._id}`;
         let res = await fetch(url, {
             method: "GET",
             headers: { "Content-Type": "application/json" }
