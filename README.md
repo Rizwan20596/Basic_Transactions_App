@@ -10,17 +10,19 @@ React JS
 Please add a .env file in the backend folder with PORT and MONGODB_URI
 To run backend app, goto /backend folder in terminal, do npm install and then run npm start
 To run frontend app, goto /frontend/wallet_ui folder in terminal, do npm install and then run npm start
+services are deployed to: https://test-services.onrender.com
+App is deployed to: https://wallet-app-ui.onrender.com/
 
 API Endpoints :
 '/api/wallet' --> to get all wallets.
 example:
-localhost:3000/api/wallet  --> 
+https://test-services.onrender.com/api/wallet  --> 
 response: {
     "data": []
 }
 '/api/wallet/setup' --> to create a wallet
 example:
-localhost:3000/api/wallet/setup --> 
+https://test-services.onrender.com/api/wallet/setup --> 
 request body: 
 {
     "balance":300,
@@ -39,7 +41,7 @@ response:
 
 '/api/wallet/:id' --> get a wallet details.
 example:
-localhost:3000/api/wallet/64023aff7f20468863821678
+https://test-services.onrender.com/api/wallet/64023aff7f20468863821678
 repsonse: 
  {
  "data": {
@@ -54,7 +56,7 @@ repsonse:
 
 '/api/transactions' --> to get all transactions.
 example:
-localhost:3000/api/transactions --> 
+https://test-services.onrender.com/api/transactions --> 
 response: {
   data:[],
 }
@@ -62,7 +64,7 @@ response: {
 
 '/api/transactions/transact/:wallet_id' --> to create a transaction.
 example:
-localhost:3000/api/transactions/transact/64023aff7f20468863821678
+https://test-services.onrender.com/api/transactions/transact/64023aff7f20468863821678
 response: 
 {
     "data": {
@@ -81,7 +83,7 @@ response:
 
 '/api/transactions/:id' --> get a transaction details.
 example:
-localhost:3000/api/transactions/64023e57952be40f378ca757
+https://test-services.onrender.com/api/transactions/64023e57952be40f378ca757
 response:
 {
     "data": {
@@ -100,7 +102,7 @@ response:
 
 '/api/transactions/wallet/:wallet_id' --> get all transactions of a specific wallet
 example:
-localhost:3000/api/transactions?walletId=64023aff7f20468863821678&skip=0&limit=10
+https://test-services.onrender.com/api/transactions?walletId=64023aff7f20468863821678&skip=0&limit=10
 response:
 {
     "data": [
