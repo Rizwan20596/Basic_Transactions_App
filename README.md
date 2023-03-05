@@ -12,6 +12,7 @@ To run backend app, goto /backend folder in terminal, do npm install and then ru
 To run frontend app, goto /frontend/wallet_ui folder in terminal, do npm install and then run npm start
 services are deployed to: https://test-services.onrender.com
 App is deployed to: https://wallet-app-ui.onrender.com/
+Note: The deployed code will not load the view-transactions page because render's free service only supports the single page app's. Need to deploy on another server if we want to load other pages too.. 
 
 API Endpoints :
 '/api/wallet' --> to get all wallets.
